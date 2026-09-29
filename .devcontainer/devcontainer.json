@@ -1,0 +1,12 @@
+{
+  "name": "Math2Music",
+  "image": "mcr.microsoft.com/devcontainers/rust:1-bookworm",
+  "forwardPorts": [8080],
+  "portsAttributes": {
+    "8080": {
+      "label": "Math2Music Trunk",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "postCreateCommand": "rustup target add wasm32-unknown-unknown && cargo install trunk --locked"
+}

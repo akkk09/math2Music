@@ -25,9 +25,9 @@ fn play(expr:&str,freq:f64,gain:f64)->Result<(),JsValue>{stop_audio();let contex
 #[wasm_bindgen(start)]
 pub fn start()->Result<(),JsValue>{
  console_error_panic_hook::set_once();let expression:HtmlInputElement=el("expression")?;draw(&expression.value())?;
- let input_expr=expression.clone();let input=Closure::<dyn FnMut(_)>::new(move |_|{let _=draw(&input_expr.value());});expression.add_event_listener_with_callback("input",input.as_ref().unchecked_ref())?;input.forget();
- let play_expr=expression.clone();let button:HtmlElement=el("play")?;let cb=Closure::<dyn FnMut(_)>::new(move |_|{let f:HtmlInputElement=el("frequency").unwrap();let g:HtmlInputElement=el("gain").unwrap();let freq=f.value().parse().unwrap_or(220.);let gain=g.value().parse().unwrap_or(0.15);if let Err(e)=play(&play_expr.value(),freq,gain){status(&format!("audio error: {e:?}"));}});button.add_event_listener_with_callback("click",cb.as_ref().unchecked_ref())?;cb.forget();
- let stop:HtmlElement=el("stop")?;let cb=Closure::<dyn FnMut(_)>::new(move |_|{stop_audio();status("stopped")});stop.add_event_listener_with_callback("click",cb.as_ref().unchecked_ref())?;cb.forget();
- let demo_expr=expression.clone();let demo:HtmlElement=el("demo")?;let cb=Closure::<dyn FnMut(_)>::new(move |_|{demo_expr.set_value("sin(x) + 0.5sin(3x)");let _=draw(&demo_expr.value());status("loaded harmonic demo")});demo.add_event_listener_with_callback("click",cb.as_ref().unchecked_ref())?;cb.forget();
+ let input_expr=expression.clone();let input=Closure::<dyn FnMut(web_sys::Event)>::new(move |_|{let _=draw(&input_expr.value());});expression.add_event_listener_with_callback("input",input.as_ref().unchecked_ref())?;input.forget();
+ let play_expr=expression.clone();let button:HtmlElement=el("play")?;let cb=Closure::<dyn FnMut(web_sys::Event)>::new(move |_|{let f:HtmlInputElement=el("frequency").unwrap();let g:HtmlInputElement=el("gain").unwrap();let freq=f.value().parse().unwrap_or(220.);let gain=g.value().parse().unwrap_or(0.15);if let Err(e)=play(&play_expr.value(),freq,gain){status(&format!("audio error: {e:?}"));}});button.add_event_listener_with_callback("click",cb.as_ref().unchecked_ref())?;cb.forget();
+ let stop:HtmlElement=el("stop")?;let cb=Closure::<dyn FnMut(web_sys::Event)>::new(move |_|{stop_audio();status("stopped")});cb.as_ref();stop.add_event_listener_with_callback("click",cb.as_ref().unchecked_ref())?;cb.forget();
+ let demo_expr=expression.clone();let demo:HtmlElement=el("demo")?;let cb=Closure::<dyn FnMut(web_sys::Event)>::new(move |_|{demo_expr.set_value("sin(x) + 0.5sin(3x)");let _=draw(&demo_expr.value());status("loaded harmonic demo")});demo.add_event_listener_with_callback("click",cb.as_ref().unchecked_ref())?;cb.forget();
  status("ready");Ok(())
 }

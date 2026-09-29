@@ -8,5 +8,6 @@
       "onAutoForward": "openBrowser"
     }
   },
-  "postCreateCommand": "rustup target add wasm32-unknown-unknown && cargo install trunk --locked"
+  "onCreateCommand": "rustup target add wasm32-unknown-unknown && cargo install trunk --locked",
+  "postCreateCommand": "rustup target add wasm32-unknown-unknown"
 }

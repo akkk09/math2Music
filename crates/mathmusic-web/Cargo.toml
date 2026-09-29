@@ -1,0 +1,19 @@
+[package]
+name = "mathmusic-web"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+crate-type = ["cdylib"]
+path = "src/lib.rs"
+
+[dependencies]
+mathmusic-core = { path = "../mathmusic-core" }
+wasm-bindgen.workspace = true
+console_error_panic_hook = "0.1.7"
+web-sys = { workspace = true, features = [
+  "Window", "Document", "Element", "HtmlElement", "HtmlInputElement",
+  "HtmlCanvasElement", "CanvasRenderingContext2d", "Event", "EventTarget",
+  "AudioContext", "OscillatorNode", "GainNode", "AudioNode", "AudioParam"
+] }

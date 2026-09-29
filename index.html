@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MathMusic — Mathematical DAW</title><link rel="stylesheet" href="style.css"></head>
+<title>MathMusic — Mathematical DAW</title><link rel="stylesheet" href="style.css">\n<link data-trunk rel="rust" href="Cargo.toml" data-target-name="mathmusic-web"></head>
 <body><main class="app">
 <header><div><div class="eyebrow">MATHMUSIC / 0.1</div><h1>Mathematics is the instrument.</h1><p>Type a function, see its shape, and turn it into sound.</p></div><button id="demo" class="ghost">Load harmonic demo</button></header>
 <section class="workspace"><aside class="panel controls">
@@ -12,4 +12,4 @@
 </aside><section class="panel graph-panel"><div class="panel-head"><span>FUNCTION GRAPH</span><span>domain −2π … 2π</span></div><canvas id="graph" width="1100" height="560"></canvas></section></section>
 <section class="panel timeline"><div class="panel-head"><span>TIMELINE</span><span>MathTrack 01</span></div><div class="lane"><div class="clip"><span>sin(x) + 0.5sin(3x)</span><small>mathematical source</small></div><div class="playhead"></div></div></section>
 <footer><span>Rust + WebAssembly</span><span>Mathematical state stays editable; audio is a render.</span></footer>
-</main><script type="module">import init from "./pkg/mathmusic_web.js";init();</script></body></html>
+</main></body></html>

@@ -1,3 +1,5 @@
 /target/
 /site/pkg/
 .DS_Store
+
+/dist/

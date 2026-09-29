@@ -15,5 +15,6 @@ console_error_panic_hook = "0.1.7"
 web-sys = { workspace = true, features = [
   "Window", "Document", "Element", "HtmlElement", "HtmlInputElement",
   "HtmlCanvasElement", "CanvasRenderingContext2d", "Event", "EventTarget",
-  "AudioContext", "OscillatorNode", "GainNode", "AudioNode", "AudioParam"
+  "AudioContext", "AudioDestinationNode", "OscillatorNode", "GainNode",
+  "AudioNode", "AudioParam"
 ] }
